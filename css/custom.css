@@ -1,0 +1,28 @@
+.main {
+	padding-top: 60px;
+}
+
+.pushOsaka {
+	background-image: url("../img/baloon.svg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 50px;
+	color: black;
+	font-weight: bold;
+}
+
+.accordion-table {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.navbarOsaka {
+	padding: 0;
+	font-weight: bold;
+}
+
+.bodyOsaka {
+	background-color: LightGreen;
+}

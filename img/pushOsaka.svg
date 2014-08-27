@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<svg viewBox="0 0 450 350" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <metadata id="metadata9">image/svg+xml</metadata>
+ <g>
+  <title>Layer 1</title>
+  <path d="m7.56844,8.79012l439.51457,-0.20679l-0.75,262.54368l-36,17.70596l-348.74971,0c0,0 -55.51486,-38.86899 -56.26486,-39.47899c-0.75,-0.61101 2.25,-240.56389 2.25,-240.56389l0,0.00002z" stroke-width="14px" stroke-linejoin="round" stroke="#ffffff" fill="#2f9065" id="svg_3"/>
+  <line y2="77.2723" x2="147.362" y1="77.2723" x1="57.3524" stroke-width="14px" stroke-linejoin="round" stroke="#ffffff" fill="none" id="svg_6"/>
+  <line y2="197.261" x2="38.8426" y1="79.6512" x1="141.779" stroke-width="14px" stroke-linejoin="round" stroke="#ffffff" fill="none" id="svg_7"/>
+  <line y2="200.956" x2="155.298" y1="79.9168" x1="63.2506" stroke-width="14px" stroke-linejoin="round" stroke="#ffffff" fill="none" id="svg_9"/>
+  <line y2="217.041" x2="95.7268" y1="129.939" x1="103.26" transform="rotate(-4.37274 99.5181 173.49)" stroke-width="14px" stroke-linejoin="round" stroke="#ffffff" fill="none" id="svg_11"/>
+  <text xml:space="preserve" y="115.0663" x="187.1004" transform="matrix(3.50951 0 0 3.64045 -363.982 -208.56)" text-anchor="middle" stroke-width="0" stroke-linejoin="round" stroke="#ffffff" fill="#ffffff" style="cursor: move; pointer-events: inherit;" font-size="24" font-family="serif" id="svg_12">大阪市</text>
+  <text xml:space="preserve" y="96.0525" x="278.8755" transform="matrix(1.46412 0 0 1.46116 -116.496 -34.6066)" text-anchor="middle" stroke-width="0" stroke-linejoin="round" stroke="#ffffff" fill="#ffffff" font-size="24" font-family="serif" id="svg_14">OSAKA CITY</text>
+ </g>
+</svg>
