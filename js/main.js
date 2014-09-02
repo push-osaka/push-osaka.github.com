@@ -3,6 +3,7 @@
 var categoryTable;
 var areaTable;
 var currentCategoryIndex;
+var currentAreaIndex;
 var currentDate;
 
 $(function() {
@@ -66,6 +67,11 @@ $(function() {
 									categoryTable[1][currentCategoryIndex]);
 	}
 	
+	// 現在の地域を反映する
+	function reflectCurrentArea() {
+		$("#currentArea").html(areaTable[1][currentAreaIndex]);
+	}
+	
 	// カテゴリメニューを作成する
 	function makeCategoryMenu() {
 		reflectCurrentCategory();
@@ -86,6 +92,25 @@ $(function() {
 		});
 	}
 	
+	// 地域メニューを作成する
+	function makeAreaMenu() {
+		reflectCurrentArea();
+		var html = "";
+		for (var i in areaTable[1]) {
+			html += "<li><a href='#'>" + categoryTable[1][i] + "</a></li>";
+		}
+		$("#areaMenu").html(html);
+		$("#areaMenu li").click(function() {
+			currentAreaIndex = $("#areaMenu li").index(this);
+			localStorage.currentAreaIndex = currentAreaIndex;
+			reflectCurrentArea();
+			getRSSData(function(data) {
+				// 広報を作成
+				makePublicRelations(data);
+			});
+		});
+	}
+
 	// 広報を作成する
 	function makePublicRelations(data) {
 		var html = "";
@@ -113,6 +138,8 @@ $(function() {
 	
 	// 現在のカテゴリを取得
 	currentCategoryIndex = (localStorage.currentCategoryIndex == null)? 0 : localStorage.currentCategoryIndex;
+	// 現在の地域を取得
+	currentAreaIndex = (localStorage.currentAreaIndex == null)? 0 : localStorage.currentAreaIndex;
 	// 現在の日付を取得
 	currentDate = (localStorage.currentDate == null)? "" : localStorage.currentDate;
 	$("#dateValue").val(currentDate);
@@ -124,6 +151,8 @@ $(function() {
 			areaTable = table;
 			// 広報のカテゴリメニューの作成
 			makeCategoryMenu();
+			// 広報の地域メニューの作成
+			makeAreaMenu();
 			// 日付設定の作成
 			$("#setDate").click(function() {
 				currentDate = localStorage.currentDate = $("#dateValue").val();
