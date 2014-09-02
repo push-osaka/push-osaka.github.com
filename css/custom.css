@@ -46,6 +46,11 @@
 }
 
 @media screen and (max-width: 767px) {
+	.dropdown-toggleOsaka {
+		display: inline-block;
+		width: auto;
+	}
+
 	.form-controlOsaka {
 		display: inline-block;
 		width: auto;
