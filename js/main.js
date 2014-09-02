@@ -94,6 +94,7 @@ $(function() {
 			html +=	"<div class='accordion-group'>" + 
 				   		"<div class='accordion-heading'>" +
 							"<div class='pushOsakaDate'>" + data[i].date.value.replace("T", " ").replace("Z", "") +"</div>" +
+							"<div class='pushOsakaCategoryLabel'>" + data[i].category_label.value +"</div>" +
 							"<a class='accordion-toggle' data-toggle='collapse' data_parent='#rss-list' href='#rss" + i + "'>" +
 								"<div class='accordion-table'><img src='img/" + svgCategory +"' width='30'></div>" +
 								"<div class='accordion-table pushOsaka'>" + data[i].title.value +  "</div>" +

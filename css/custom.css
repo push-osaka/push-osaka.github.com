@@ -8,8 +8,14 @@
 }
 
 .pushOsakaDate {
+	display: inline-block;
 	padding-left: 30px;
 	color: #808080;
+}
+
+.pushOsakaCategoryLabel {
+	display: inline-block;
+	padding-left: 20px;
 }
 
 .pushOsaka {
