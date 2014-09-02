@@ -2,6 +2,16 @@
 	padding-top: 60px;
 }
 
+.accordion-table {
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+.pushOsakaDate {
+	padding-left: 30px;
+	color: #808080;
+}
+
 .pushOsaka {
 	background-image: url("../img/baloon.svg");
 	background-size: cover;
@@ -13,16 +23,25 @@
 	font-weight: bold;
 }
 
-.accordion-table {
-	display: table-cell;
-	vertical-align: middle;
-}
-
 .navbarOsaka {
 	padding: 0;
 	font-weight: bold;
 }
 
 .bodyOsaka {
-	background-color: LightGreen;
+	z-index: -1;
+	background-image: url("../img/sora.jpg");
+	background-repeat: no-repeat;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+	.form-controlOsaka {
+		display: inline-block;
+		width: auto;
+	}
 }

@@ -1,16 +1,36 @@
 ﻿"use strict"
 
+var categoryTable;
+var currentCategoryIndex;
+var currentDate;
+
 $(function() {
+	function makeFilter() {
+		var filter ="";
+		if (currentCategoryIndex != 0) {
+			filter += "FILTER(?category = '" + categoryTable[0][currentCategoryIndex] + "')";
+		}
+		if (currentDate != "") {
+			filter += "FILTER(xsd:dateTime(?date) >= '" + currentDate + "T00:00:00Z" + "'^^xsd:dateTime)";
+		}
+		return filter;
+	}
+	
+	// SPARQLで大阪市のRSSデータを取得する
 	function getRSSData(completedFunc) {
 		var sparql = new Sparql();
-		var filter = "";
+		var filter = makeFilter(categoryTable);
 		var endpoint = "http://lod.hozo.jp/repositories/CHOsaka";
-		var query = "SELECT ?g ?title ?date ?link WHERE { GRAPH ?g "+
-				"{ ?s <http://purl.org/rss/2.0/title> ?title."+
-				" ?s <http://purl.org/rss/2.0/link> ?link."+
-				" ?s <http://purl.org/rss/2.0/pubDate> ?date. }"+
-				filter+
-				"}"
+		var query = "SELECT ?category ?category_label ?title ?date ?link WHERE {" +
+			 			"GRAPH <http://lodosaka.jp/osakarss> {"+
+							"?s <http://lodosaka.jp/property#category> ?category." +
+							"?s <http://lodosaka.jp/property#category_label> ?category_label." +
+							"?s <http://purl.org/rss/2.0/title> ?title."+
+							"?s <http://purl.org/rss/2.0/link> ?link."+
+							"?s <http://purl.org/rss/2.0/pubDate> ?date. "+
+							filter +
+						"}" +
+					"}ORDER BY DESC(?date)";
 		var qr = sendQuery(endpoint,query);
 		qr.fail(
 			function (xhr, textStatus, thrownError) {
@@ -23,15 +43,60 @@ $(function() {
 			}
 		);
 	}
+
+	// CSVデータを配列に取得する
+	function csvToArray(fileName, completedFunc) {
+		$.get(fileName, function(csvd) {
+			// csvデータを行に分割
+			var rows = csvd.replace(/\r/g, "").split("\n");
+			// csvデータをテーブルにする
+			var table = [];
+			for (var i in rows) {
+				table.push(rows[i].split(","));
+			}
+			// 完了通知関数を呼び出す
+			completedFunc(table);
+		});
+	}
+
+	// 現在のカテゴリを反映する
+	function reflectCurrentCategory() {
+		$("#currentCategory").html("<img src='img/" + categoryTable[2][currentCategoryIndex] + "' width='20'>" + 
+									categoryTable[1][currentCategoryIndex]);
+	}
 	
-	getRSSData(function(data) {
+	// カテゴリメニューを作成する
+	function makeCategoryMenu() {
+		reflectCurrentCategory();
+		var html = "";
+		for (var i in categoryTable[1]) {
+			html += "<li><a href='#'><img src='img/" + categoryTable[2][i] +"' width='25'>" +
+					categoryTable[1][i] + "</a></li>";
+		}
+		$("#categoryMenu").html(html);
+		$("#categoryMenu li").click(function() {
+			currentCategoryIndex = $("#categoryMenu li").index(this);
+			localStorage.currentCategoryIndex = currentCategoryIndex;
+			reflectCurrentCategory();
+			getRSSData(function(data) {
+				// 広報を作成
+				makePublicRelations(data);
+			});
+		});
+	}
+	
+	// 広報を作成する
+	function makePublicRelations(data) {
 		var html = "";
 		for (var i in data) {
+			var categoryIndex = categoryTable[0].indexOf(data[i].category.value);
+			var svgCategory = categoryTable[2][categoryIndex];
 			html +=	"<div class='accordion-group'>" + 
 				   		"<div class='accordion-heading'>" +
+							"<div class='pushOsakaDate'>" + data[i].date.value.replace("T", " ").replace("Z", "") +"</div>" +
 							"<a class='accordion-toggle' data-toggle='collapse' data_parent='#rss-list' href='#rss" + i + "'>" +
-								"<div class='accordion-table'><img src='img/mother9.svg' width='30'></div>" +
-								"<div class='accordion-table pushOsaka'>" + data[i].title.value + "</div>" +
+								"<div class='accordion-table'><img src='img/" + svgCategory +"' width='30'></div>" +
+								"<div class='accordion-table pushOsaka'>" + data[i].title.value +  "</div>" +
 							"</a>" +
 						"</div>" +
 						"<div id='rss" + i +"' class='according-body collapse'>" +
@@ -42,5 +107,32 @@ $(function() {
 					"</div>";
 		}
 		$("#rss-list").html(html);
+	}
+	
+	// 現在のカテゴリを取得
+	currentCategoryIndex = (localStorage.currentCategoryIndex == null)? 0 : localStorage.currentCategoryIndex;
+	// 現在の日付を取得
+	currentDate = (localStorage.currentDate == null)? "" : localStorage.currentDate;
+	$("#dateValue").val(currentDate);
+
+	// カテゴリ情報の取得
+	csvToArray("data/category.csv", function(table) {
+		categoryTable = table;
+		// 広報のカテゴリメニューの作成
+		makeCategoryMenu();
+		// 日付設定の作成
+		$("#setDate").click(function() {
+			currentDate = localStorage.currentDate = $("#dateValue").val();
+			getRSSData(function(data) {
+				// 広報を作成
+				makePublicRelations(data);
+			});
+		});
+		// 大阪市RSSの取得
+		getRSSData(function(data) {
+			// 広報を作成
+			makePublicRelations(data);
+		});
 	});
+	
 });

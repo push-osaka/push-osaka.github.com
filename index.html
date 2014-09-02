@@ -11,7 +11,8 @@
 		<link href="css/bootstrap.css" rel="stylesheet" media="screen">
 		<link href="css/custom.css" rel="stylesheet" media="screen">
 	</head>
-	<body class="bodyOsaka">
+	<body>
+		<div class="bodyOsaka"></div>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -27,18 +28,16 @@
 					<div class="collapse navbar-collapse" id="collapse1">
 						<ul class="nav navbar-nav">
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<span class="glyphicon glyphicon-leaf"></span>
-									カテゴリ
-								</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#"><img src="img/business60.svg" width="20">大阪市</a></li>
-									<li><a href="#"><img src="img/family11.svg" width="20">暮らし</a></li>
-									<li><a href="#"><img src="img/brandenburg.svg" width="20">建築</a></li>
-									<li><a href="#"><img src="img/mother9.svg" width="20">子育て・教育・こども青少年活動</a></li>
-								</ul>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="currentCategory"></a>
+								<ul class="dropdown-menu" role="menu" id="categoryMenu"></ul>
 							</li>
 						</ul>
+						<form class="navbar-form navbar-left" role="search">
+							<div class="form-group">
+								<input type="date" class="form-control form-controlOsaka" value="" id="dateValue">
+								<button type="button" class="btn btn-default" id="setDate">設定</button>
+							</div>
+						</form>
 					</div>	
 				</div>	
 				<div class="accordion main" id="rss-list">
