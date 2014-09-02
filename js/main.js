@@ -1,6 +1,7 @@
 ﻿"use strict"
 
 var categoryTable;
+var areaTable;
 var currentCategoryIndex;
 var currentDate;
 
@@ -119,20 +120,23 @@ $(function() {
 	// カテゴリ情報の取得
 	csvToArray("data/category.csv", function(table) {
 		categoryTable = table;
-		// 広報のカテゴリメニューの作成
-		makeCategoryMenu();
-		// 日付設定の作成
-		$("#setDate").click(function() {
-			currentDate = localStorage.currentDate = $("#dateValue").val();
+		csvToArray("data/area.csv", function(table) {
+			areaTable = table;
+			// 広報のカテゴリメニューの作成
+			makeCategoryMenu();
+			// 日付設定の作成
+			$("#setDate").click(function() {
+				currentDate = localStorage.currentDate = $("#dateValue").val();
+				getRSSData(function(data) {
+					// 広報を作成
+					makePublicRelations(data);
+				});
+			});
+			// 大阪市RSSの取得
 			getRSSData(function(data) {
 				// 広報を作成
 				makePublicRelations(data);
 			});
-		});
-		// 大阪市RSSの取得
-		getRSSData(function(data) {
-			// 広報を作成
-			makePublicRelations(data);
 		});
 	});
 	
