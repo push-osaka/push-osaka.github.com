@@ -97,7 +97,7 @@ $(function() {
 		reflectCurrentArea();
 		var html = "";
 		for (var i in areaTable[1]) {
-			html += "<li><a href='#'>" + categoryTable[1][i] + "</a></li>";
+			html += "<li><a href='#'>" + areaTable[1][i] + "</a></li>";
 		}
 		$("#areaMenu").html(html);
 		$("#areaMenu li").click(function() {
