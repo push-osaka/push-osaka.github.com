@@ -149,9 +149,7 @@ $(function() {
 							"<a class='accordion-toggle' data-toggle='collapse' data_parent='#rss-list' href='#rss" + i + "'>" +
 								"<div class='pushOsaka'>" + data[i].title.value +  "</div>" +
 							"</a>" +
-							"<div class='accordion-table'>" + 
-								"<img src='img/" + svgCategory +"' width='30'>" + 
-							"</div>" +
+							"<img class='pushOsakaCategoryIcon' src='img/" + svgCategory +"' width='30'>" + 
 						"</div>" +
 						"<div id='rss" + i +"' class='according-body collapse'>" +
 							"<div class='accordion-inner'>" +

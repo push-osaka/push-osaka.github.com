@@ -2,15 +2,14 @@
 	padding-top: 60px;
 }
 
-.accordion-table {
-	display: table-cell;
-	vertical-align: bottom;
-}
-
 .pushOsakaDate {
 	display: inline-block;
 	padding-left: 30px;
 	color: #808080;
+}
+
+.pushOsakaCategoryIcon {
+	margin-top: -40px;
 }
 
 .pushOsakaCategoryLabel {
