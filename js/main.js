@@ -147,7 +147,7 @@ $(function() {
 			// 広報の地域メニューの作成
 			makeAreaMenu();
 			// 日付設定の作成
-			$("#setDate").click(function() {
+			$("#dateValue").change(function() {
 				currentDate = localStorage.currentDate = $("#dateValue").val();
 				getRSSData(function(data) {
 					// 広報を作成
