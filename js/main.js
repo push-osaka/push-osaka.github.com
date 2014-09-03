@@ -147,7 +147,7 @@ $(function() {
 							"<div class='pushOsakaHeader'>" +
 								"<div class='pushOsakaCategoryLabel'>" + data[i].category_label.value +"</div>" +
 								"<div class='pushOsakaDate'>" + data[i].date.value.replace("T", " ").replace("Z", "") +"</div>" +
-								"<div class='pushOsaka'>" + data[i].title.value +  "</div>" +
+								"<div class='pushOsaka'><a href='" + data[i].link.value + "'>" + data[i].title.value +  "</a></div>" +
 							"</div>" +
 							"<a class='accordion-toggle' data-toggle='collapse' data_parent='#rss-list' href='#rss" + i + "'>" +
 								"<img class='pushOsakaCategoryIcon' src='img/" + svgCategory +"' width='30'>" + 
@@ -155,7 +155,7 @@ $(function() {
 						"</div>" +
 						"<div id='rss" + i +"' class='according-body collapse'>" +
 							"<div class='accordion-inner'>" +
-								"<a href='" + data[i].link.value + "'>" + data[i].link.value + "</a>" +
+								data[i].area_label.value +
 							"</div>" +
 						"</div>" +
 					"</div>";
