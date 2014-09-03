@@ -91,11 +91,15 @@ $(function() {
 	function makeAreaMenu() {
 		var html = "";
 		for (var i in areaTable[1]) {
-			html += "<option value='" + i + "'>" + areaTable[1][i] + "</option>";
+			if (i == 0) {
+				html += "<option value='" + i + "'> selected" + areaTable[1][i] + "</option>";
+			} else {
+				html += "<option value='" + i + "'>" + areaTable[1][i] + "</option>";
+			}
 		}
 		$("#areaMenu").html(html);
 		$("#areaMenu").change(function() {
-			currentAreaIndex = $("#areaMenu option:selected").attr(value);
+			currentAreaIndex = this.val();
 			localStorage.currentAreaIndex = currentAreaIndex;
 			getRSSData(function(data) {
 				// 広報を作成
