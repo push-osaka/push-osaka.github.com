@@ -15,6 +15,9 @@ $(function() {
 		if (currentDate != "") {
 			filter += "FILTER(xsd:dateTime(?date) >= '" + currentDate + "T00:00:00Z" + "'^^xsd:dateTime)";
 		}
+		if (currentAreaIndex != 0) {
+			filter += "FILTER(regex(?area," + areaTable[0][currentAreaIndex] + ")";
+		}
 		return filter;
 	}
 	
