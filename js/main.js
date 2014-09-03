@@ -155,6 +155,7 @@ $(function() {
 						"</div>" +
 						"<div id='rss" + i +"' class='according-body collapse'>" +
 							"<div class='accordion-inner'>" +
+								"<div class='pushOsakaInner'>分類：" + data[i].category_label.value + "</div>" +
 								"<div class='pushOsakaInner'>地域：" + data[i].area_label.value + "</div>" +
 								"<div class='pushOsakaInner'>職業：" + data[i].key_label.value + "</div>" +
 							"</div>" +
