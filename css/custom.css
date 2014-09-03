@@ -3,13 +3,13 @@
 }
 
 .pushOsakaHeader {
-	width: 600px;
+	display: table-cell;
 }
 
 .pushOsakaDate {
-	display: inline-block;
 	padding-left: 30px;
 	color: #808080;
+	text-align: right;
 }
 
 .pushOsakaCategoryIcon {
@@ -17,9 +17,9 @@
 }
 
 .pushOsakaCategoryLabel {
-	display: inline-block;
 	padding-left: 20px;
 	font-size: 20px;
+	margin-bottom: -20px;
 }
 
 .pushOsaka {
