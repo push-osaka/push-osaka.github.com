@@ -64,7 +64,7 @@ $(function() {
 	// カテゴリメニューを作成する
 	function makeCategoryMenu() {
 		var html = "";
-		for (var i in areaTable[1]) {
+		for (var i in categoryTable[1]) {
 			if (i == currentCategoryIndex) {
 				html += "<option value='" + i + "' selected><img src='img/" + categoryTable[2][i] +"' width='25'>" + categoryTable[1][i] + "</option>";
 			} else {
