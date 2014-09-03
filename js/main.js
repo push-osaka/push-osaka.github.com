@@ -146,10 +146,10 @@ $(function() {
 				   		"<div class='accordion-heading'>" +
 							"<div class='pushOsakaCategoryLabel'>" + data[i].category_label.value +"</div>" +
 							"<div class='pushOsakaDate'>" + data[i].date.value.replace("T", " ").replace("Z", "") +"</div>" +
+							"<div class='pushOsaka'>" + data[i].title.value +  "</div>" +
 							"<a class='accordion-toggle' data-toggle='collapse' data_parent='#rss-list' href='#rss" + i + "'>" +
-								"<div class='pushOsaka'>" + data[i].title.value +  "</div>" +
+								"<img class='pushOsakaCategoryIcon' src='img/" + svgCategory +"' width='30'>" + 
 							"</a>" +
-							"<img class='pushOsakaCategoryIcon' src='img/" + svgCategory +"' width='30'>" + 
 						"</div>" +
 						"<div id='rss" + i +"' class='according-body collapse'>" +
 							"<div class='accordion-inner'>" +
