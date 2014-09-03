@@ -47,7 +47,7 @@
 
 .labelOsaka{
 	display: inline-block;
-	width: 40px;
+	width: 100px;
 }
 
 @media screen and (max-width: 767px) {
