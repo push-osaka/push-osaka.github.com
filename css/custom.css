@@ -22,8 +22,9 @@
 	background-image: url("../img/baloon.svg");
 	background-size: cover;
 	background-repeat: no-repeat;
-	padding-left: 50px;
-	padding-bottom: 50px;
+	margin-left: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
 	color: black;
 	font-weight: bold;
 }
@@ -54,7 +55,9 @@
 		background-image: url("../img/baloon.svg");
 		background-size: cover;
 		background-repeat: no-repeat;
-		padding-left: 50px;
+		margin-left: 50px;
+		padding-left: 10px;
+		padding-right: 10px;
 		padding-bottom: 50px;
 		color: black;
 		font-weight: bold;
