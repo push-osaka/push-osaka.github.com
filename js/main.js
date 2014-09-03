@@ -94,7 +94,7 @@ $(function() {
 			html += "<option>" + areaTable[1][i] + "</option>";
 		}
 		$("#areaMenu").html(html);
-		$("#areaMenu option").click(function() {
+		$("#areaMenu option").change(function() {
 			currentAreaIndex = $("#areaMenu option").index(this);
 			localStorage.currentAreaIndex = currentAreaIndex;
 			getRSSData(function(data) {
