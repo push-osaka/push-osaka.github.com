@@ -144,7 +144,7 @@ $(function() {
 			var svgCategory = categoryTable[2][categoryIndex];
 			html +=	"<div class='accordion-group'>" + 
 				   		"<div class='accordion-heading'>" +
-							"<div>" +
+							"<div class='23:08 2014/09/03pushOsakaHeader'>" +
 								"<div class='pushOsakaCategoryLabel'>" + data[i].category_label.value +"</div>" +
 								"<div class='pushOsakaDate'>" + data[i].date.value.replace("T", " ").replace("Z", "") +"</div>" +
 								"<div class='pushOsaka'>" + data[i].title.value +  "</div>" +
