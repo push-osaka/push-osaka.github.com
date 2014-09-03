@@ -2,6 +2,10 @@
 	padding-top: 60px;
 }
 
+.pushOsakaHeader {
+	width: 600px;
+}
+
 .pushOsakaDate {
 	display: inline-block;
 	padding-left: 30px;
