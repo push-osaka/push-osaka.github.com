@@ -26,12 +26,14 @@ $(function() {
 		var sparql = new Sparql();
 		var filter = makeFilter(categoryTable);
 		var endpoint = "http://lod.hozo.jp/repositories/CHOsaka";
-		var query = "SELECT ?category ?category_label ?title ?date ?link ?area ?area_label WHERE {" +
+		var query = "SELECT ?category ?category_label ?title ?date ?link ?area ?area_label ?key ?key_label WHERE {" +
 			 			"GRAPH <http://lodosaka.jp/osakarss> {"+
 							"?s <http://lodosaka.jp/property#category> ?category." +
 							"?s <http://lodosaka.jp/property#category_label> ?category_label." +
 							"?s <http://lodosaka.jp/property#area> ?area." +
 							"?s <http://lodosaka.jp/property#area_label> ?area_label." +
+							"?s <http://lodosaka.jp/property#area> ?key." +
+							"?s <http://lodosaka.jp/property#area_label> ?key_label." +
 							"?s <http://purl.org/rss/2.0/title> ?title."+
 							"?s <http://purl.org/rss/2.0/link> ?link."+
 							"?s <http://purl.org/rss/2.0/pubDate> ?date. "+
