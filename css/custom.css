@@ -22,6 +22,11 @@
 	margin-bottom: -20px;
 }
 
+.pushOsakaTitle {
+	color: black;
+	font-weight: bold;
+}
+
 .pushOsaka {
 	background-image: url("../img/baloon.svg");
 	background-size: cover;
@@ -34,7 +39,7 @@
 }
 
 .pushOsakaInner {
-	font-size: 15px;
+	font-size: 17px;
 	color: blue;
 	font-weight: bold;
 }
