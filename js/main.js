@@ -63,13 +63,8 @@ $(function() {
 
 	// 現在のカテゴリを反映する
 	function reflectCurrentCategory() {
-		$("#currentCategory").html("<img src='img/" + categoryTable[2][currentCategoryIndex] + "' width='20'>" + 
+		$("#currentCategory").html("<img src='img/" + categoryTable[2][currentCategoryIndex] + "' width='15'>" + 
 									categoryTable[1][currentCategoryIndex]);
-	}
-	
-	// 現在の地域を反映する
-	function reflectCurrentArea() {
-		$("#currentArea").html(areaTable[1][currentAreaIndex]);
 	}
 	
 	// カテゴリメニューを作成する
@@ -94,16 +89,14 @@ $(function() {
 	
 	// 地域メニューを作成する
 	function makeAreaMenu() {
-		reflectCurrentArea();
 		var html = "";
 		for (var i in areaTable[1]) {
-			html += "<li><a href='#'>" + areaTable[1][i] + "</a></li>";
+			html += "<option>" + areaTable[1][i] + "</option>";
 		}
 		$("#areaMenu").html(html);
-		$("#areaMenu li").click(function() {
-			currentAreaIndex = $("#areaMenu li").index(this);
+		$("#areaMenu option").click(function() {
+			currentAreaIndex = $("#areaMenu option").index(this);
 			localStorage.currentAreaIndex = currentAreaIndex;
-			reflectCurrentArea();
 			getRSSData(function(data) {
 				// 広報を作成
 				makePublicRelations(data);
