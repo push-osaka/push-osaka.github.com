@@ -99,7 +99,7 @@ $(function() {
 		}
 		$("#areaMenu").html(html);
 		$("#areaMenu").change(function() {
-			currentAreaIndex = this.val();
+			currentAreaIndex = $("#areaMenu").val();
 			localStorage.currentAreaIndex = currentAreaIndex;
 			getRSSData(function(data) {
 				// 広報を作成
