@@ -91,11 +91,11 @@ $(function() {
 	function makeAreaMenu() {
 		var html = "";
 		for (var i in areaTable[1]) {
-			html += "<option>" + areaTable[1][i] + "</option>";
+			html += "<option value='" + i + "'>" + areaTable[1][i] + "</option>";
 		}
 		$("#areaMenu").html(html);
-		$("#areaMenu option").change(function() {
-			currentAreaIndex = $("#areaMenu option").index(this);
+		$("#areaMenu").change(function() {
+			currentAreaIndex = $("#areaMenu option:selected").attr(value);
 			localStorage.currentAreaIndex = currentAreaIndex;
 			getRSSData(function(data) {
 				// 広報を作成
