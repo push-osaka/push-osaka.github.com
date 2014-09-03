@@ -92,7 +92,7 @@ $(function() {
 		var html = "";
 		for (var i in areaTable[1]) {
 			if (i == 0) {
-				html += "<option value='" + i + "'> selected" + areaTable[1][i] + "</option>";
+				html += "<option value='" + i + "' selected>" + areaTable[1][i] + "</option>";
 			} else {
 				html += "<option value='" + i + "'>" + areaTable[1][i] + "</option>";
 			}

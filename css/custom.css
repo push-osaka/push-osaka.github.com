@@ -45,11 +45,6 @@
 	bottom: 0;
 }
 
-.form-controlOsaka {
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
-
 @media screen and (max-width: 767px) {
 	.nav li {
 		display: inline-block;
