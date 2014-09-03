@@ -144,9 +144,11 @@ $(function() {
 			var svgCategory = categoryTable[2][categoryIndex];
 			html +=	"<div class='accordion-group'>" + 
 				   		"<div class='accordion-heading'>" +
-							"<div class='pushOsakaCategoryLabel'>" + data[i].category_label.value +"</div>" +
-							"<div class='pushOsakaDate'>" + data[i].date.value.replace("T", " ").replace("Z", "") +"</div>" +
-							"<div class='pushOsaka'>" + data[i].title.value +  "</div>" +
+							"<div>" +
+								"<div class='pushOsakaCategoryLabel'>" + data[i].category_label.value +"</div>" +
+								"<div class='pushOsakaDate'>" + data[i].date.value.replace("T", " ").replace("Z", "") +"</div>" +
+								"<div class='pushOsaka'>" + data[i].title.value +  "</div>" +
+							"</div>" +
 							"<a class='accordion-toggle' data-toggle='collapse' data_parent='#rss-list' href='#rss" + i + "'>" +
 								"<img class='pushOsakaCategoryIcon' src='img/" + svgCategory +"' width='30'>" + 
 							"</a>" +
