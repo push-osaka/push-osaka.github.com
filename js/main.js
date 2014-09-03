@@ -69,29 +69,30 @@ $(function() {
 	
 	// カテゴリメニューを作成する
 	function makeCategoryMenu() {
-		reflectCurrentCategory();
 		var html = "";
-		for (var i in categoryTable[1]) {
-			html += "<li><a href='#'><img src='img/" + categoryTable[2][i] +"' width='25'>" +
-					categoryTable[1][i] + "</a></li>";
+		for (var i in areaTable[1]) {
+			if (i == currentCategoryIndex) {
+				html += "<option value='" + i + "' selected><img src='img/" + categoryTable[2][i] +"' width='25'> categoryTable[1][i] + </option>";
+			} else {
+				html += "<option value='" + i + "'><img src='img/" + categoryTable[2][i] +"' width='25'> categoryTable[1][i] + </option>";
+			}
 		}
 		$("#categoryMenu").html(html);
-		$("#categoryMenu li").click(function() {
-			currentCategoryIndex = $("#categoryMenu li").index(this);
+		$("#categoryMenu").change(function() {
+			currentCategoryIndex = $("#categoryMenu").val();
 			localStorage.currentCategoryIndex = currentCategoryIndex;
-			reflectCurrentCategory();
 			getRSSData(function(data) {
 				// 広報を作成
 				makePublicRelations(data);
 			});
 		});
 	}
-	
+
 	// 地域メニューを作成する
 	function makeAreaMenu() {
 		var html = "";
 		for (var i in areaTable[1]) {
-			if (i == 0) {
+			if (i == currentAreaIndex) {
 				html += "<option value='" + i + "' selected>" + areaTable[1][i] + "</option>";
 			} else {
 				html += "<option value='" + i + "'>" + areaTable[1][i] + "</option>";
