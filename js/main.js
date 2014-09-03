@@ -32,8 +32,8 @@ $(function() {
 							"?s <http://lodosaka.jp/property#category_label> ?category_label." +
 							"?s <http://lodosaka.jp/property#area> ?area." +
 							"?s <http://lodosaka.jp/property#area_label> ?area_label." +
-							"?s <http://lodosaka.jp/property#key> ?key." +
-							"?s <http://lodosaka.jp/property#key_label> ?key_label." +
+							"?s <http://lodosaka.jp/property#keywords> ?key." +
+							"?s <http://lodosaka.jp/property#keywords_label> ?key_label." +
 							"?s <http://purl.org/rss/2.0/title> ?title."+
 							"?s <http://purl.org/rss/2.0/link> ?link."+
 							"?s <http://purl.org/rss/2.0/pubDate> ?date. "+
