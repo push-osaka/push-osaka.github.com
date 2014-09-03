@@ -2,8 +2,10 @@
 
 var categoryTable;
 var areaTable;
+var targetTable;
 var currentCategoryIndex;
 var currentAreaIndex;
+var currentTargetIndex;
 var currentDate;
 
 $(function() {
@@ -17,6 +19,9 @@ $(function() {
 		}
 		if (currentAreaIndex != 0) {
 			filter += "FILTER(regex(?area,'" + areaTable[0][currentAreaIndex] + "'))";
+		}
+		if (currentTargetIndex != 0) {
+			filter += "FILTER(regex(?key,'" + targetTable[0][currentTargetIndex] + "'))";
 		}
 		return filter;
 	}
@@ -110,6 +115,27 @@ $(function() {
 		});
 	}
 
+	// 対象者メニューを作成する
+	function makeTargetMenu() {
+		var html = "";
+		for (var i in targetTable[1]) {
+			if (i == currentTargetIndex) {
+				html += "<option value='" + i + "' selected>" + targetTable[1][i] + "</option>";
+			} else {
+				html += "<option value='" + i + "'>" + targetTable[1][i] + "</option>";
+			}
+		}
+		$("#targetMenu").html(html);
+		$("#targetMenu").change(function() {
+			currentTargetIndex = $("#targetMenu").val();
+			localStorage.currentTargetIndex = currentTargetIndex;
+			getRSSData(function(data) {
+				// 広報を作成
+				makePublicRelations(data);
+			});
+		});
+	}
+
 	// 広報を作成する
 	function makePublicRelations(data) {
 		var html = "";
@@ -139,6 +165,8 @@ $(function() {
 	currentCategoryIndex = (localStorage.currentCategoryIndex == null)? 0 : localStorage.currentCategoryIndex;
 	// 現在の地域を取得
 	currentAreaIndex = (localStorage.currentAreaIndex == null)? 0 : localStorage.currentAreaIndex;
+	// 現在の対象者を取得
+	currentTargetIndex = (localStorage.currentTargetIndex == null)? 0 : localStorage.currentTargetIndex;
 	// 現在の日付を取得
 	currentDate = (localStorage.currentDate == null)? "" : localStorage.currentDate;
 	$("#dateValue").val(currentDate);
@@ -148,22 +176,27 @@ $(function() {
 		categoryTable = table;
 		csvToArray("data/area.csv", function(table) {
 			areaTable = table;
-			// 広報のカテゴリメニューの作成
-			makeCategoryMenu();
-			// 広報の地域メニューの作成
-			makeAreaMenu();
-			// 日付設定の作成
-			$("#dateValue").change(function() {
-				currentDate = localStorage.currentDate = $("#dateValue").val();
+			csvToArray("data/target.csv", function(table) {
+				targetTable = table;
+				// カテゴリメニューの作成
+				makeCategoryMenu();
+				// 地域メニューの作成
+				makeAreaMenu();
+				// 対象者メニューの作成
+				makeTargetMenu();
+				// 日付設定の作成
+				$("#dateValue").change(function() {
+					currentDate = localStorage.currentDate = $("#dateValue").val();
+					getRSSData(function(data) {
+						// 広報を作成
+						makePublicRelations(data);
+					});
+				});
+				// 大阪市RSSの取得
 				getRSSData(function(data) {
 					// 広報を作成
 					makePublicRelations(data);
 				});
-			});
-			// 大阪市RSSの取得
-			getRSSData(function(data) {
-				// 広報を作成
-				makePublicRelations(data);
 			});
 		});
 	});
