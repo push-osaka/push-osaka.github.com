@@ -61,20 +61,14 @@ $(function() {
 		});
 	}
 
-	// 現在のカテゴリを反映する
-	function reflectCurrentCategory() {
-		$("#currentCategory").html("<img src='img/" + categoryTable[2][currentCategoryIndex] + "' width='15'>" + 
-									categoryTable[1][currentCategoryIndex]);
-	}
-	
 	// カテゴリメニューを作成する
 	function makeCategoryMenu() {
 		var html = "";
 		for (var i in areaTable[1]) {
 			if (i == currentCategoryIndex) {
-				html += "<option value='" + i + "' selected><img src='img/" + categoryTable[2][i] +"' width='25'> categoryTable[1][i] + </option>";
+				html += "<option value='" + i + "' selected><img src='img/" + categoryTable[2][i] +"' width='25'>" + categoryTable[1][i] + "</option>";
 			} else {
-				html += "<option value='" + i + "'><img src='img/" + categoryTable[2][i] +"' width='25'> categoryTable[1][i] + </option>";
+				html += "<option value='" + i + "'><img src='img/" + categoryTable[2][i] +"' width='25'>" + categoryTable[1][i] + "</option>";
 			}
 		}
 		$("#categoryMenu").html(html);
