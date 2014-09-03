@@ -22,11 +22,11 @@
 	background-image: url("../img/baloon.svg");
 	background-size: cover;
 	background-repeat: no-repeat;
-	margin-left: 50px;
-	padding-left: 10px;
-	padding-right: 10px;
+	margin-left: 30px;
+	padding: 5px 10px 50px 10px;
 	color: black;
 	font-weight: bold;
+	width: 500px;
 }
 
 .navbarOsaka {
@@ -55,10 +55,8 @@
 		background-image: url("../img/baloon.svg");
 		background-size: cover;
 		background-repeat: no-repeat;
-		margin-left: 50px;
-		padding-left: 10px;
-		padding-right: 10px;
-		padding-bottom: 50px;
+		margin-left: 30px;
+		padding: 5px 10px 50px 10px;
 		color: black;
 		font-weight: bold;
 		width: 300px;
