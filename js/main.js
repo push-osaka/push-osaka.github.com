@@ -4,11 +4,13 @@ var categoryTable;
 var areaTable;
 var targetTable;
 var sexTable = [["man", "woman"],["男性","女性"]];
+var childTable = [["t10","t11","t12","t13","t14"],["未就学生","小学生","中学生","高校生","学生"]];
 var currentCategoryIndex;
 var currentAreaIndex;
 var currentTargetIndex;
 var currentDate;
 var currentSexIndex;
+var currentChildIndex;
 
 $(function() {
 	function makeFilter() {
@@ -170,6 +172,17 @@ $(function() {
 		$("#rss-list").html(html);
 	}
 	
+	function getChildIndex(value) {
+		var data = [0,0,0,0,0,0];
+		for (var i = 0; i < 6; i++) {
+			if (value & 0x1) {
+				data[i] = 1;
+			}
+			value >>= 1:
+		}
+		return data;
+	}
+	
 	// 現在のカテゴリを取得
 	currentCategoryIndex = (localStorage.currentCategoryIndex == null)? 0 : localStorage.currentCategoryIndex;
 	// 現在の地域を取得
@@ -182,6 +195,8 @@ $(function() {
 	// 現在の性別の取得
 	currentSexIndex = (localStorage.currentSexIndex == null)? 2 : localStorage.currentSexIndex;
 	$("[name='sex']:eq(" + currentSexIndex + ")").attr("checked", true);
+	// 現在の子供の取得
+	currentChildIndex = (localStorage.currentChildIndex == null)? 0 : localStorage.currentChildIndex;
 
 	// カテゴリ情報の取得
 	csvToArray("data/category.csv", function(table) {
@@ -207,6 +222,22 @@ $(function() {
 				// 性別の取得
 				$("[name='sex']").click(function() {
 					currentSexIndex = localStorage.currentSexIndex = $("[name='sex']:checked").val();
+					getRSSData(function(data) {
+						// 広報を作成
+						makePublicRelations(data);
+					});
+				});
+				// 子供の取得
+				$("[name='child']").click(function() {
+					var power = 1;
+					currentChildIndex = 0;
+					for (var i = 0; i < 6; i++) {
+						if ($("[name='child']:eq(" + i + ")").val() == 1) {
+							currentChildIndex += power;
+						}
+						power *= 2;
+					}
+					localStorage.currentChildIndex = currentChildIndex;
 					getRSSData(function(data) {
 						// 広報を作成
 						makePublicRelations(data);
