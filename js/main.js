@@ -207,6 +207,10 @@ $(function() {
 				// 性別の取得
 				$("[name='sex']").click(function() {
 					currentSexIndex = localStorage.currentSexIndex = $("[name='sex']:checked").val();
+					getRSSData(function(data) {
+						// 広報を作成
+						makePublicRelations(data);
+					});
 				});
 				// 大阪市RSSの取得
 				getRSSData(function(data) {
