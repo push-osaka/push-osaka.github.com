@@ -3,6 +3,7 @@
 var categoryTable;
 var areaTable;
 var targetTable;
+var sexTable = [["man", "woman"],["男性","女性"]];
 var currentCategoryIndex;
 var currentAreaIndex;
 var currentTargetIndex;
@@ -23,6 +24,9 @@ $(function() {
 		}
 		if (currentTargetIndex != 0) {
 			filter += "FILTER(regex(?key,'" + targetTable[0][currentTargetIndex] + "'))";
+		}
+		if (currentSexIndex != 2) {
+			filter += "FILTER(regex(?key,'" + sexTable[0][currentSexIndex] + "'))";
 		}
 		return filter;
 	}
