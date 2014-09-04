@@ -39,7 +39,7 @@ $(function() {
 					filter += "regex(?key,'" + childTable[0][i] + "') ||";
 				}
 			}
-			filter = filter.substr(filter.length - 3);
+			filter = filter.substr(0, filter.length - 3);
 			filter += ")";
 		}
 		return filter;
