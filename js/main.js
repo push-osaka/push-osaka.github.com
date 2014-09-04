@@ -7,6 +7,7 @@ var currentCategoryIndex;
 var currentAreaIndex;
 var currentTargetIndex;
 var currentDate;
+var currentSexIndex;
 
 $(function() {
 	function makeFilter() {
@@ -174,7 +175,9 @@ $(function() {
 	// 現在の日付を取得
 	currentDate = (localStorage.currentDate == null)? "" : localStorage.currentDate;
 	$("#dateValue").val(currentDate);
-
+	// 現在の性別の取得
+	currentSexIndex = (localStorage.currentSexIndex == null)? 0 : localStorage.currentSexIndex;
+	
 	// カテゴリ情報の取得
 	csvToArray("data/category.csv", function(table) {
 		categoryTable = table;
@@ -195,6 +198,13 @@ $(function() {
 						// 広報を作成
 						makePublicRelations(data);
 					});
+				});
+				// 性別の取得
+				$("[name='sex']").click(function() {
+					var index = $("[name='sex']").index(this);
+					if (this.attr("checked") == "checked") {
+						currentSexIndex = index;
+					}
 				});
 				// 大阪市RSSの取得
 				getRSSData(function(data) {
