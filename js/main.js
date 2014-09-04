@@ -201,10 +201,7 @@ $(function() {
 				});
 				// 性別の取得
 				$("[name='sex']").click(function() {
-					var index = $("[name='sex']").index(this);
-					if (this.attr("checked") == "checked") {
-						currentSexIndex = index;
-					}
+					var index = $("[name='sex']:checked").val();
 				});
 				// 大阪市RSSの取得
 				getRSSData(function(data) {
