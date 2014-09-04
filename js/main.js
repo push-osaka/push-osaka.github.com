@@ -13,6 +13,8 @@ var currentSexIndex;
 var currentChildIndex;
 
 $(function() {
+	var childBits;
+	
 	function makeFilter() {
 		var filter ="";
 		if (currentCategoryIndex != 0) {
@@ -29,6 +31,16 @@ $(function() {
 		}
 		if (currentSexIndex != 2) {
 			filter += "FILTER(regex(?key,'" + sexTable[0][currentSexIndex] + "'))";
+		}
+		if (currentChildIndex != 0) {
+			filter += "FILTER(";
+			for (var i = 0;i < childBits.length; i++) {
+				if (i > 0) filter += " || ";
+				id (childBits[i] == 1) {
+					filter += "regex(?key,'" + childTable[0][i] + "')";
+				}
+			}
+			filter += ")";
 		}
 		return filter;
 	}
@@ -197,9 +209,9 @@ $(function() {
 	$("[name='sex']:eq(" + currentSexIndex + ")").attr("checked", true);
 	// 現在の子供の取得
 	currentChildIndex = (localStorage.currentChildIndex == null)? 0 : localStorage.currentChildIndex;
-	var childTable = getChildIndex(currentChildIndex);
+	childBits = getChildIndex(currentChildIndex);
 	for (var i = 0; i < childTable.length; i++) {
-		if (childTable[i] == 1) {
+		if (childBits[i] == 1) {
 			$("[name='child']:eq(" + i + ")").attr("checked", true);
 		}
 	}
@@ -237,7 +249,7 @@ $(function() {
 				$("[name='child']").click(function() {
 					var power = 1;
 					currentChildIndex = 0;
-					for (var i = 0; i < childTable.length; i++) {
+					for (var i = 0; i < childBits.length; i++) {
 						if ($("[name='child']:eq(" + i + ")").is(":checked")) {
 							currentChildIndex += power;
 						}
