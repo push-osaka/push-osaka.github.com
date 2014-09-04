@@ -197,7 +197,13 @@ $(function() {
 	$("[name='sex']:eq(" + currentSexIndex + ")").attr("checked", true);
 	// 現在の子供の取得
 	currentChildIndex = (localStorage.currentChildIndex == null)? 0 : localStorage.currentChildIndex;
-
+	var childTable = getChildIndex(currentChildIndex);
+	for (var i = 0; i < childTable.length; i++) {
+		if (childTable[i] == 1) {
+			$("[name='child']:eq(" + i + ")").attr("checked", true);
+		}
+	}
+	
 	// カテゴリ情報の取得
 	csvToArray("data/category.csv", function(table) {
 		categoryTable = table;
