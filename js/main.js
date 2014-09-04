@@ -176,8 +176,8 @@ $(function() {
 	currentDate = (localStorage.currentDate == null)? "" : localStorage.currentDate;
 	$("#dateValue").val(currentDate);
 	// 現在の性別の取得
-	currentSexIndex = (localStorage.currentSexIndex == null)? 0 : localStorage.currentSexIndex;
-	$("[name='sex']:eq(2)").attr("checked", true);
+	currentSexIndex = (localStorage.currentSexIndex == null)? 2 : localStorage.currentSexIndex;
+	$("[name='sex']:eq(" + currentSexIndex + ")").attr("checked", true);
 
 	// カテゴリ情報の取得
 	csvToArray("data/category.csv", function(table) {
