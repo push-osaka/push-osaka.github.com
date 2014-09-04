@@ -66,6 +66,11 @@
 	width: 50px;
 }
 
+.form-controlOsaka {
+	display: inline-block;
+	width: 160px;
+}
+
 @media screen and (max-width: 640px) {
 	.pushOsaka {
 		background-image: url("../img/baloon.svg");
@@ -76,10 +81,6 @@
 		color: black;
 		font-weight: bold;
 		width: 250px;
-	}
-	.form-controlOsaka {
-		display: inline-block;
-		width: 160px;
 	}
 }
 
