@@ -232,7 +232,7 @@ $(function() {
 					var power = 1;
 					currentChildIndex = 0;
 					for (var i = 0; i < 6; i++) {
-						if ($("[name='child']:eq(" + i + ")").val() == 1) {
+						if ($("[name='child']:eq(" + i + ")").is(":checked")) {
 							currentChildIndex += power;
 						}
 						power *= 2;
