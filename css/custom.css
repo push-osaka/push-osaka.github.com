@@ -101,4 +101,7 @@
 	.navbar-toggle {
 		display: block;
 	}
+	.navbar-form .form-group {
+		margin-bottom: 5px;
+  }
 }
