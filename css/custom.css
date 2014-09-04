@@ -102,6 +102,7 @@
 		display: block;
 	}
 	.navbar-form .form-group {
+		display: block;
 		margin-bottom: 5px;
   }
 }
