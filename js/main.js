@@ -178,7 +178,7 @@ $(function() {
 			if (value & 0x1) {
 				data[i] = 1;
 			}
-			value >>= 1:
+			value >>= 1;
 		}
 		return data;
 	}
