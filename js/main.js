@@ -173,8 +173,8 @@ $(function() {
 	}
 	
 	function getChildIndex(value) {
-		var data = [0,0,0,0,0,0];
-		for (var i = 0; i < 6; i++) {
+		var data = [0,0,0,0,0];
+		for (var i = 0; i < data.length; i++) {
 			if (value & 0x1) {
 				data[i] = 1;
 			}
@@ -237,7 +237,7 @@ $(function() {
 				$("[name='child']").click(function() {
 					var power = 1;
 					currentChildIndex = 0;
-					for (var i = 0; i < 6; i++) {
+					for (var i = 0; i < childTable.length; i++) {
 						if ($("[name='child']:eq(" + i + ")").is(":checked")) {
 							currentChildIndex += power;
 						}
