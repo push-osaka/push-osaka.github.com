@@ -202,7 +202,7 @@ $(function() {
 				});
 				// 性別の取得
 				$("[name='sex']").click(function() {
-					currentSexIndex = $("[name='sex']:checked").val();
+					currentSexIndex localStorage.currentSexIndex = $("[name='sex']:checked").val();
 				});
 				// 大阪市RSSの取得
 				getRSSData(function(data) {
