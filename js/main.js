@@ -36,10 +36,10 @@ $(function() {
 			filter += "FILTER(";
 			for (var i = 0; i < childBits.length; i++) {
 				if (childBits[i] == 1) {
-					filter += "regex(?key,'" + childTable[0][i] + "') ||";
+					filter += "regex(?key,'" + childTable[0][i] + "') || ";
 				}
 			}
-			filter = filter.substr(0, filter.length - 3);
+			filter = filter.substr(0, filter.length - 4);
 			filter += ")";
 		}
 		return filter;
@@ -210,7 +210,7 @@ $(function() {
 	// 現在の子供の取得
 	currentChildIndex = (localStorage.currentChildIndex == null)? 0 : localStorage.currentChildIndex;
 	childBits = getChildIndex(currentChildIndex);
-	for (var i = 0; i < childTable.length; i++) {
+	for (var i = 0; i < childBits.length; i++) {
 		if (childBits[i] == 1) {
 			$("[name='child']:eq(" + i + ")").attr("checked", true);
 		}
