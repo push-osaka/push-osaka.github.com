@@ -34,12 +34,12 @@ $(function() {
 		}
 		if (currentChildIndex != 0) {
 			filter += "FILTER(";
-			for (var i = 0;i < childBits.length; i++) {
-				if (i > 0) filter += " || ";
+			for (var i = 0; i < childBits.length; i++) {
 				if (childBits[i] == 1) {
-					filter += "regex(?key,'" + childTable[0][i] + "')";
+					filter += "regex(?key,'" + childTable[0][i] + "') ||";
 				}
 			}
+			filter = substr(filter, filter.length - 3);
 			filter += ")";
 		}
 		return filter;
