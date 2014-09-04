@@ -164,9 +164,9 @@ $(function() {
 			html +=	"<div class='accordion-group'>" + 
 				   		"<div class='accordion-heading'>" +
 							"<div class='pushOsakaHeader'>" +
-								"<div class='pushOsakaCategoryLabel'>" + data[i].category_label.value +"</div>" +
 								"<div class='pushOsakaDate'>" + data[i].date.value.replace("T", " ").replace("Z", "") +"</div>" +
 								"<div class='pushOsaka'><a class='pushOsakaTitle' href='" + data[i].link.value + "'>" + data[i].title.value +  "</a></div>" +
+								"<div class='pushOsakaCategoryLabel'>" + data[i].category_label.value +"</div>" +
 							"</div>" +
 							"<a class='accordion-toggle' data-toggle='collapse' data_parent='#rss-list' href='#rss" + i + "'>" +
 								"<img class='pushOsakaCategoryIcon' src='img/" + svgCategory +"' width='30'>" + 
