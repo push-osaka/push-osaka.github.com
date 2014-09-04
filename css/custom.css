@@ -97,4 +97,7 @@
 	.navbar-toggle {
 		display: block;
 	}
+	.collapse.in {
+		display: block;
+	}
 }
