@@ -36,7 +36,7 @@ $(function() {
 			filter += "FILTER(";
 			for (var i = 0;i < childBits.length; i++) {
 				if (i > 0) filter += " || ";
-				id (childBits[i] == 1) {
+				if (childBits[i] == 1) {
 					filter += "regex(?key,'" + childTable[0][i] + "')";
 				}
 			}
