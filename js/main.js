@@ -177,7 +177,8 @@ $(function() {
 	$("#dateValue").val(currentDate);
 	// 現在の性別の取得
 	currentSexIndex = (localStorage.currentSexIndex == null)? 0 : localStorage.currentSexIndex;
-	
+	$("[name='sex'] [value='0']").click();
+
 	// カテゴリ情報の取得
 	csvToArray("data/category.csv", function(table) {
 		categoryTable = table;
@@ -201,7 +202,7 @@ $(function() {
 				});
 				// 性別の取得
 				$("[name='sex']").click(function() {
-					var index = $("[name='sex']:checked").val();
+					currentSexIndex = $("[name='sex']:checked").val();
 				});
 				// 大阪市RSSの取得
 				getRSSData(function(data) {
